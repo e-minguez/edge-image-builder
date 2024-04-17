@@ -35,7 +35,7 @@ RUN zypper addrepo https://download.opensuse.org/repositories/isv:SUSE:Edge:Edge
     podman \
     createrepo_c \
     helm hauler \
-    nm-configurator \
+    nm-configurator-023 \
     ca-certificates-suse && \
     zypper clean -a
 
