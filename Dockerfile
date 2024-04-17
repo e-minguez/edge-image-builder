@@ -27,6 +27,7 @@ FROM opensuse/leap:15.5
 # 5. Embedded artefact registry
 # 6. Network configuration
 RUN zypper addrepo https://download.opensuse.org/repositories/isv:SUSE:Edge:EdgeImageBuilder/SLE-15-SP5/isv:SUSE:Edge:EdgeImageBuilder.repo && \
+    zypper addrepo https://download.opensuse.org/repositories/SUSE:CA/15.5/SUSE:CA.repo && \
     zypper --gpg-auto-import-keys refresh && \
     zypper install -y \
     xorriso squashfs  \
@@ -34,7 +35,8 @@ RUN zypper addrepo https://download.opensuse.org/repositories/isv:SUSE:Edge:Edge
     podman \
     createrepo_c \
     helm hauler \
-    nm-configurator && \
+    nm-configurator-023 \
+    ca-certificates-suse && \
     zypper clean -a
 
 COPY --from=0 /src/eib /bin/eib
